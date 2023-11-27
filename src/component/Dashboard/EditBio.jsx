@@ -103,8 +103,8 @@ const EditBio = () => {
                     user &&
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                         <div className="text-center">
-                            <h1 className="text-3xl mb-2 font-bold">Biodata Form</h1>
-                            <label className="p-1 rounded-md bg-pink-100 font-semibold">Bio Data ID : {bioId} </label>
+                            <h1 className="text-3xl mb-2 font-bold">Update BioData</h1>
+                            <label className="p-1 rounded-md bg-pink-100 font-semibold">Bio Data ID : {selectedUser?.bioId} </label>
                         </div>
 
                         {/* <div>

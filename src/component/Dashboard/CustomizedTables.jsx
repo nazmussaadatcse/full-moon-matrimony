@@ -34,6 +34,16 @@ const SimpleTable = ({ data }) => {
                             {data.name}
                         </td>
                     </tr>
+                    <tr
+                        className="border-b border-gray-200 hover:bg-gray-100"
+                    >
+                        <td className="py-3 px-6 text-left whitespace-nowrap text-pink-950 font-semibold">
+                            Age:
+                        </td>
+                        <td className="py-3 px-6 text-left whitespace-nowrap text-pink-700 font-semibold">
+                            {data.age}
+                        </td>
+                    </tr>
 
                     <tr
                         className="border-b border-gray-200 hover:bg-gray-100"
@@ -52,7 +62,7 @@ const SimpleTable = ({ data }) => {
                         <td className="py-3 px-6 text-left whitespace-nowrap text-pink-950 font-semibold">
                             Bio Data Type:
                         </td>
-                        <td className="py-3 px-6 text-left whitespace-nowrap text-pink-700 font-semibold">
+                        <td className="py-3 px-6 text-left uppercase whitespace-nowrap text-pink-700 font-semibold">
                             {data.biodataType}
                         </td>
                     </tr>
