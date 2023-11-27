@@ -17,19 +17,12 @@ const EditBio = () => {
     const axiosSecure = useAxiosSecure();
     const [userId, setUserId] = useState(null); // State to hold the found user ID
     const [bioId, setBioId] = useState(null);
+    const [selectedUser, setSelectedUser] = useState(null);
+    const idX = (userId);
 
     console.log(users);
 
-    useEffect(() => {
-        if (users) {
-            const foundBioId = users?.bioId;
-            if (foundBioId) {
-                setBioId(foundBioId);
-            } else {
-                setBioId(users.length + 1);
-            }
-        }
-    }, [users]);
+   
 
 
 
@@ -41,9 +34,32 @@ const EditBio = () => {
     }, [users, user]);
 
 
+    useEffect(() => {
+        if (userId) {
+            const userById = users.find(person => person._id === userId);
+            if (userById) {
+                setSelectedUser(userById);
+            }
+        }
+    }, [userId, users]);
+
+    useEffect(() => {
+        if (users) {
+            const foundBioId = users?.bioId;
+            if (foundBioId) {
+                setBioId(foundBioId);
+            } else {
+                setBioId(users.length);
+            }
+        }
+    }, [users]);
+    
+    console.log(selectedUser);
 
 
-    const idX = (userId);
+
+
+
     // const bioId = ([users].length + 1);
     console.log(bioId);
     console.log(idX);
@@ -91,13 +107,12 @@ const EditBio = () => {
                             <label className="p-1 rounded-md bg-pink-100 font-semibold">Bio Data ID : {bioId} </label>
                         </div>
 
-                        <div>
-                            <input className="text-transparent" type="text" readOnly defaultValue={user ? users?.bioId : bioId} {...register('bioId')} />
-                            {/* The rest of your visible content */}
-                        </div>
+                        {/* <div>
+                            <input className="text-transparent" type="text" readOnly defaultValue={bioId} {...register('bioId')} />
+                        </div> */}
                         <div className=" border rounded-md p-2">
                             <label className="p-1 rounded-md bg-slate-100">Biodata Type: </label>
-                            <select className="mx-1 p-1" defaultValue={user ? users?.biodataType : ''} {...register('biodataType', { required: true })}>
+                            <select className="mx-1 p-1" defaultValue={user ? selectedUser?.biodataType : ''} {...register('biodataType', { required: true })}>
                                 <option value="">Select Type</option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
@@ -106,7 +121,7 @@ const EditBio = () => {
                         </div>
                         <div className=" border rounded-md p-2">
                             <label className="p-1 rounded-md bg-slate-100">Full Name: </label>
-                            <input className="p-1 mx-1" type="text" defaultValue={user ? users?.name : user.displayName} {...register('name', { required: true })} />
+                            <input className="p-1 mx-1" type="text" defaultValue={user ? selectedUser?.name : user?.displayName} {...register('name', { required: true })} />
                             {errors.name && <span className="text-red-500">This field is required</span>}
                         </div>
                         {/* <div>
@@ -114,15 +129,15 @@ const EditBio = () => {
                         </div> */}
                         <div className=" border rounded-md p-2">
                             <label className="p-1 rounded-md bg-slate-100">PhotoURL: </label>
-                            <input className="p-1 mx-1 w-4/5" type="text" defaultValue={user ? users?.photo : user.photoURL} {...register('photo')} />
+                            <input className="p-1 mx-1 w-4/5" type="text" defaultValue={user ? selectedUser?.photo : user.photoURL} {...register('photo')} />
                         </div>
                         <div className=" border rounded-md p-2">
                             <label className="p-1 rounded-md bg-slate-100">Date of Birth: </label>
-                            <input className="p-1 mx-1" type="date" defaultValue={user ? users?.dateOfBirth : 'null'}{...register('dateOfBirth')} />
+                            <input className="p-1 mx-1" type="date" defaultValue={user ? selectedUser?.dateOfBirth : 'null'}{...register('dateOfBirth')} />
                         </div>
                         <div className="border rounded-md p-2">
                             <label className="p-1 rounded-md bg-slate-100">Height: </label>
-                            <select className="p-1 mx-1" defaultValue={user ? users?.height : ''} {...register('height', { required: true })}>
+                            <select className="p-1 mx-1" defaultValue={user ? selectedUser?.height : ''} {...register('height', { required: true })}>
                                 <option value="">Select Height</option>
                                 <option value="4">4 feet</option>
                                 <option value="4.5">4.5 feet</option>
@@ -136,7 +151,7 @@ const EditBio = () => {
 
                         <div className="border rounded-md p-2">
                             <label className="p-1 rounded-md bg-slate-100">Weight: </label>
-                            <select className="p-1 mx-1" defaultValue={user ? users?.weight : ''}  {...register('weight', { required: true })}>
+                            <select className="p-1 mx-1" defaultValue={user ? selectedUser?.weight : ''}  {...register('weight', { required: true })}>
                                 <option value="">Select Weight</option>
                                 <option value="60">60 kg</option>
                                 <option value="70">70 kg</option>
@@ -147,7 +162,7 @@ const EditBio = () => {
                         </div>
                         <div className=" border rounded-md p-2">
                             <label className="p-1 rounded-md bg-slate-100">Age: </label>
-                            <input placeholder="18 years old" className="p-1 mx-1 w-20" type="number" defaultValue={user ? users?.age : ''} {...register('age', { required: true, min: 18 })} />
+                            <input placeholder="18 years old" className="p-1 mx-1 w-20" type="number" defaultValue={user ? selectedUser?.age : ''} {...register('age', { required: true, min: 18 })} />
                             {errors.age && errors.age.type === 'min' && (
                                 <span className="text-red-500">Age must be at least 18</span>
                             )}
@@ -155,7 +170,7 @@ const EditBio = () => {
 
                         <div className="border rounded-md p-2">
                             <label className="p-1 rounded-md bg-slate-100">Occupation: </label>
-                            <select className="p-1 mx-1" defaultValue={user ? users?.occupation : ''} {...register('occupation', { required: true })}>
+                            <select className="p-1 mx-1" defaultValue={user ? selectedUser?.occupation : ''} {...register('occupation', { required: true })}>
                                 <option value="">Select Occupation</option>
                                 <option value="Teacher">Teacher</option>
                                 <option value="Engineer">Engineer</option>
@@ -167,7 +182,7 @@ const EditBio = () => {
 
                         <div className="border rounded-md p-2">
                             <label className="p-1 rounded-md bg-slate-100">Race</label>
-                            <select className="p-1 mx-1" defaultValue={user ? users?.race : ''} {...register('race', { required: true })}>
+                            <select className="p-1 mx-1" defaultValue={user ? selectedUser?.race : ''} {...register('race', { required: true })}>
                                 <option value="">Select Race</option>
                                 <option value="Asian">Asian</option>
                                 <option value="American">American</option>
@@ -179,15 +194,15 @@ const EditBio = () => {
 
                         <div className=" border rounded-md p-2">
                             <label className="p-1 rounded-md bg-slate-100">Fathers name :</label>
-                            <input placeholder="Your dad name " className="p-1 mx-1 w-3/5" type="text" defaultValue={user ? users?.fathersName : ''} {...register('fathersName')} />
+                            <input placeholder="Your dad name " className="p-1 mx-1 w-3/5" type="text" defaultValue={user ? selectedUser?.fathersName : ''} {...register('fathersName')} />
                         </div>
                         <div className=" border rounded-md p-2">
                             <label className="p-1 rounded-md bg-slate-100">Mothers name: </label>
-                            <input placeholder="Your mom name" className="p-1 mx-1 w-3/5" type="text" defaultValue={user ? users?.mothersName : ''} {...register('mothersName')} />
+                            <input placeholder="Your mom name" className="p-1 mx-1 w-3/5" type="text" defaultValue={user ? selectedUser?.mothersName : ''} {...register('mothersName')} />
                         </div>
                         <div className=" border rounded-md p-2">
                             <label className="p-1 rounded-md bg-slate-100">Permanent Division: </label>
-                            <select className="mx-1 p-1" defaultValue={user ? users?.permanentDivisionName : ''} {...register('permanentDivisionName', { required: true })}>
+                            <select className="mx-1 p-1" defaultValue={user ? selectedUser?.permanentDivisionName : ''} {...register('permanentDivisionName', { required: true })}>
                                 <option value="">Select City</option>
                                 <option value="Dhaka">Dhaka</option>
                                 <option value="Chattagram">Chattagram</option>
@@ -201,7 +216,7 @@ const EditBio = () => {
                         </div>
                         <div className=" border rounded-md p-2">
                             <label className="p-1 rounded-md bg-slate-100">Present Division: </label>
-                            <select className="mx-1 p-1" defaultValue={user ? users?.presentDivisionName : ''} {...register('presentDivisionName', { required: true })}>
+                            <select className="mx-1 p-1" defaultValue={user ? selectedUser?.presentDivisionName : ''} {...register('presentDivisionName', { required: true })}>
                                 <option value="">Select City</option>
                                 <option value="Dhaka">Dhaka</option>
                                 <option value="Chattagram">Chattagram</option>
@@ -215,7 +230,7 @@ const EditBio = () => {
                         </div>
                         <div className=" border rounded-md p-2">
                             <label className="p-1 rounded-md bg-slate-100">Expected Partner Age: </label>
-                            <input placeholder="20 years old" className="p-1 mx-1 w-20" type="number" defaultValue={user ? users?.expectedPartnerAge : ''} {...register('expectedPartnerAge', { required: true, min: 18 })} />
+                            <input placeholder="20 years old" className="p-1 mx-1 w-20" type="number" defaultValue={user ? selectedUser?.expectedPartnerAge : ''} {...register('expectedPartnerAge', { required: true, min: 18 })} />
                             {errors.expectedPartnerAge && errors.expectedPartnerAge.type === 'min' && (
                                 <span className="text-red-500">Age must be at least 18</span>
                             )}
@@ -223,7 +238,7 @@ const EditBio = () => {
 
                         <div className="border rounded-md p-2">
                             <label className="p-1 rounded-md bg-slate-100">Expected Partner Height: </label>
-                            <select className="p-1 mx-1" defaultValue={user ? users?.expectedPartnerHeight : ''} {...register('expectedPartnerHeight', { required: true })}>
+                            <select className="p-1 mx-1" defaultValue={user ? selectedUser?.expectedPartnerHeight : ''} {...register('expectedPartnerHeight', { required: true })}>
                                 <option value="">Select Height</option>
                                 <option value="4">4 feet</option>
                                 <option value="4.5">4.5 feet</option>
@@ -237,7 +252,7 @@ const EditBio = () => {
 
                         <div className="border rounded-md p-2">
                             <label className="p-1 rounded-md bg-slate-100">Expected Partner Weight: </label>
-                            <select className="p-1 mx-1" defaultValue={user ? users?.expectedPartnerWeight : ''} {...register('expectedPartnerWeight', { required: true })}>
+                            <select className="p-1 mx-1" defaultValue={user ? selectedUser?.expectedPartnerWeight : ''} {...register('expectedPartnerWeight', { required: true })}>
                                 <option value="">Select Weight</option>
                                 <option value="50">50 kg</option>
                                 <option value="60">60 kg</option>
@@ -254,7 +269,7 @@ const EditBio = () => {
                         </div>
                         <div className=" border rounded-md p-2">
                             <label className="p-1 rounded-md bg-slate-100">Mobile Number: </label>
-                            <input placeholder="01303033418" className="p-1 mx-1" type="tel" defaultValue={user ? users?.mobileNumber : ''} {...register('mobileNumber', { required: true })} />
+                            <input placeholder="01303033418" className="p-1 mx-1" type="tel" defaultValue={user ? selectedUser?.mobileNumber : ''} {...register('mobileNumber', { required: true })} />
                             {errors.mobileNumber && <span className="text-red-500">This field is required</span>}
                         </div>
                         <div className="text-center">

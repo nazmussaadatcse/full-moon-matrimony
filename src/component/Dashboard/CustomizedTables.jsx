@@ -7,6 +7,7 @@ const SimpleTable = ({ data }) => {
             <div>
                 <img className='w-32 h-32 rounded-sm border-2 border-pink-700 ' src={data.photo} alt="" />
                 <h2 className='my-1 text-pink-700 font-bold'>Bio Data Photo</h2>
+                <h2 className='my-1 text-pink-700 font-bold'>Login Email: {data.email}</h2>
             </div>
 
             <table className="min-w-full border table-auto">

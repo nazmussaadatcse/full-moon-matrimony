@@ -3,9 +3,10 @@ import { useContext, useState } from "react";
 // import { updateProfile } from "firebase/auth";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form"
-import useAxiosPublic from "../hooks/useAxiosPublic";
 import { AuthContext } from "../Providers/AuthProvider";
 import SocialLogin from "../Login/SocialLogin";
+import useUsersPublic from "../hooks/useUsersPublic";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 
 
@@ -17,6 +18,12 @@ const SignUp = () => {
     const navigate = useNavigate();
     const [passwordError, setPasswordError] = useState('');
     const axiosPublic = useAxiosPublic();
+
+    const [users,] = useUsersPublic();
+    const bioId = (users.length + 1);
+    console.log(bioId);
+
+
 
     setTimeout(() => {
         setPasswordError('');
@@ -41,8 +48,10 @@ const SignUp = () => {
                         // save user to db 
                         const userInfo = {
                             name: data.name,
-                            email: data.email
+                            email: data.email,
+                            bioId: parseInt(bioId)
                         }
+                        console.log(users.length);
                         axiosPublic.post('/users', userInfo)
                             .then(res => {
                                 if (res.data.insertedId) {
