@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
 import useAxiosSecure from "../hooks/useAxiosSecure";
@@ -16,36 +16,30 @@ const EditBio = () => {
     const { user } = useContext(AuthContext);
     const axiosSecure = useAxiosSecure();
     const [userId, setUserId] = useState(null); // State to hold the found user ID
-    const bioId = user ? users?.bioId : users?.length + 1;
-
-    // const { isLoading, isError, data: [users] = [] } = useQuery({
-    //     queryKey: ['users'],
-    //     queryFn: async () => {
-    //         try {
-    //             const res = await axiosSecure.get(`/allusers`);
-    //             console.log(res.data); // Log the value here
-
-    //             const foundUser = await res.data.find((data) => data?.email === user?.email);
-
-    //             if (foundUser) {
-    //                 setUserId(foundUser._id);
-    //             }
-
-    //             return res.data;
-    //         }
-    //         catch (error) {
-    //             console.error('Error fetching data:', error);
-    //             throw new Error('Error fetching data');
-    //         }
-    //     }
-    // });
+    const [bioId, setBioId] = useState(null);
 
     console.log(users);
-    
-    const loggedUser = users.find(person=> person?.email === user?.email);
-    if (loggedUser) {
-        setUserId(loggedUser._id);
-    }
+
+    useEffect(() => {
+        if (users) {
+            const foundBioId = users?.bioId;
+            if (foundBioId) {
+                setBioId(foundBioId);
+            } else {
+                setBioId(users.length + 1);
+            }
+        }
+    }, [users]);
+
+
+
+    useEffect(() => {
+        const loggedUser = users.find(person => person?.email === user?.email);
+        if (loggedUser) {
+            setUserId(loggedUser._id);
+        }
+    }, [users, user]);
+
 
 
 
@@ -83,7 +77,7 @@ const EditBio = () => {
 
 
     };
-    
+
 
 
     return (
