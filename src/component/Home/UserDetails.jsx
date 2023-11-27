@@ -1,21 +1,24 @@
 import { Link, useParams } from "react-router-dom";
 import useUsersPublic from "../hooks/useUsersPublic";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaPhone, FaStar } from "react-icons/fa";
+import { AuthContext } from "../Providers/AuthProvider";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 
 
 const UserDetails = () => {
 
+    const {user} = useContext(AuthContext);
     const [users, refetch, femaleUsers, maleUsers] = useUsersPublic();
     const [dynamicBioType, setdynamicBioType] = useState([]);
     const idx = useParams();
     const id = (idx.id);
+    const axiosSecure = useAxiosSecure();
+
     const filteredUsers = users.filter(user => user.biodataType !== '');
-
     const userDetails = filteredUsers.find(user => user._id === id);
-    console.log(userDetails);
-
     const bioData = userDetails;
 
     useEffect(() => {
@@ -26,12 +29,50 @@ const UserDetails = () => {
         }
     }, [userDetails]);
 
-    // if(bioData.biodataType === 'male'){
-    //     setdynamicBioType(maleUsers);
-    // }
-    // else{
-    //     setdynamicBioType(femaleUsers)
-    // }
+
+
+
+    const loggedUser = users.find(person=> person?.email === user?.email);
+
+    const handleAddFavorite = (userId) => {
+        console.log("Request Contact ID:", userId);
+
+        const favoriteInfo = {
+            
+            favId: userId,
+            myId: loggedUser._id,
+            myEmail: user.email
+        }
+        // console.log(favoriteInfo);
+        axiosSecure.post('/favorite', favoriteInfo)
+            .then(res => {
+                if (res.data.insertedId) {
+                    console.log('user added to db');
+                    Swal.fire({
+                        position: "top-center",
+                        icon: "success",
+                        title: "Added to Favorite!",
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
+                }
+                else{
+                    Swal.fire({
+                        icon: "error",
+                        title: "Like Too Much...?",
+                        text: "This Bio Already in Favorite!",
+                        footer: '<a href="#">Find More.</a>'
+                      });
+                }
+            })
+        // Add your logic for handling the request contact action here
+    };
+
+    const handleRequestContact = (userId) => {
+        console.log("Add Favorite ID:", userId);
+        // Add your logic for handling the add favorite action here
+    };
+
 
     return (
         <div>
@@ -73,19 +114,25 @@ const UserDetails = () => {
                                         <p><strong>Mobile Number:</strong> {bioData.mobileNumber}</p>
                                     </div>
                                     <div className="col-span-1">
-                                            <div className="flex justify-between mt-2">
-                                                <Link className="text-pink-800 flex items-center gap-1 border rounded-lg px-2 border-pink-600 bg-pink-100 hover:bg-pink-900 hover:text-white hover:transform hover:scale-95">
-                                                    <FaPhone></FaPhone>
-                                                    <p>Request contact Info</p>
-                                                </Link>
-                                            </div>
-                                            <div className="flex justify-between mt-2">
-                                                <Link className="text-pink-800 flex items-center gap-1 border rounded-lg px-2 border-pink-600 bg-pink-100 hover:bg-pink-900 hover:text-white hover:transform hover:scale-95">
-                                                    <FaStar></FaStar> 
-                                                    <p>Add Favorite</p>
-                                                </Link>
-                                            </div>
+                                        <div className="flex justify-between mt-2">
+                                            <button
+                                                onClick={() => handleRequestContact(bioData._id)}
+                                                className="text-pink-800 flex items-center gap-1 border rounded-lg px-2 border-pink-600 bg-pink-100 hover:bg-pink-900 hover:text-white hover:transform hover:scale-95"
+                                            >
+                                                <FaPhone></FaPhone>
+                                                <p>Request contact Info</p>
+                                            </button>
                                         </div>
+                                        <div className="flex justify-between mt-2">
+                                            <button
+                                                onClick={() => handleAddFavorite(bioData._id)}
+                                                className="text-pink-800 flex items-center gap-1 border rounded-lg px-2 border-pink-600 bg-pink-100 hover:bg-pink-900 hover:text-white hover:transform hover:scale-95"
+                                            >
+                                                <FaStar></FaStar>
+                                                <p>Add Favorite</p>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
