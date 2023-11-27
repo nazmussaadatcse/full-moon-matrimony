@@ -8,6 +8,7 @@ import Login from "../Login/Login";
 import Dashboard from "../Layout/Dashboard";
 import UserInfo from "../Dashboard/UserInfo";
 import EditBio from "../Dashboard/EditBio";
+import UserDetails from "../Home/UserDetails";
   
   
   export const router = createBrowserRouter([
@@ -27,6 +28,10 @@ import EditBio from "../Dashboard/EditBio";
                 path: '/signup',
                 element: <SignUp></SignUp>
             },
+            {
+                path: '/userDetail/:id',
+                element: <UserDetails></UserDetails>
+            },
             
         ]
     },
@@ -42,6 +47,7 @@ import EditBio from "../Dashboard/EditBio";
                 path: 'editInfo',
                 element: <EditBio></EditBio>
             },
+           
           
             
         ]
