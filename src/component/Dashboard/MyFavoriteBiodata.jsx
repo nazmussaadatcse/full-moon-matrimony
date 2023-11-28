@@ -4,11 +4,12 @@ import { AuthContext } from "../Providers/AuthProvider";
 import useUsers from "../hooks/useUsers";
 import { Link } from "react-router-dom";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 
 const MyFavoriteBiodata = () => {
 
-    const [favUsers,] = useFavoriteBiodata();
+    const [favUsers, refetch] = useFavoriteBiodata();
     const [users,] = useUsers();
     const { user } = useContext(AuthContext);
     const axiosSecure = useAxiosSecure();
@@ -29,28 +30,49 @@ const MyFavoriteBiodata = () => {
 
 
 
-    
+
 
     const handleDelete = (itemId) => {
-        const userEmail = user?.email; // Assuming `user` is accessible in this scope
-    
+        const userEmail = user?.email;
+
         console.log(`Deleting item with ID: ${itemId} for user email: ${userEmail}`);
-    
-        // Make a DELETE request to your API endpoint passing both item ID and user email
-        axiosSecure.delete(`/favUsers/${itemId}`, {
-            data: { userEmail: userEmail } // Pass user email as data to the API
-        })
-        .then(response => {
-            console.log('Deletion successful');
-            // Handle any further actions after successful deletion
-        })
-        .catch(error => {
-            console.error('Deletion failed:', error);
-            // Handle errors or inform the user about deletion failure
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/favorite/${itemId}`, {
+                    params: {
+                        email: userEmail
+                    }
+                })
+                    .then(response => {
+                        console.log('Deletion successful');
+                        console.log(response);
+                        refetch() // refetch favUsers
+
+                    })
+                    .catch(error => {
+                        console.error('Deletion failed:', error);
+                    });
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your Favorite Bio been deleted.",
+                    icon: "success"
+                });
+            }
         });
+
+
     };
-    
-    
+
+
 
 
 

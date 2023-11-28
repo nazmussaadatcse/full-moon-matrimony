@@ -5,20 +5,21 @@ import { AuthContext } from "../Providers/AuthProvider";
 
 
 
+
 const useContactRequest = () => {
 
     const axiosSecure = useAxiosSecure();
     const {user} = useContext(AuthContext);
 
-    const { refetch, data: users = [] } = useQuery({
+    const { refetch, data: reqUsers = [] } = useQuery({
 
-        queryKey: ['users', user?.email],
+        queryKey: ['reqUsers', user?.email],
         queryFn: async ()=>{
-            const res = await axiosSecure.get(`/allusers`)
+            const res = await axiosSecure.get(`/requestedUsers`)
             return res.data;
         }
     })
-    return [users, refetch]
+    return [reqUsers, refetch]
 };
 
 
