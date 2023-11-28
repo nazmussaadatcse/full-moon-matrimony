@@ -35,7 +35,7 @@ const UserDetails = () => {
     const loggedUser = users.find(person=> person?.email === user?.email);
 
     const handleAddFavorite = (userId) => {
-        console.log("Request Contact ID:", userId);
+        console.log("Favorite Contact ID:", userId);
 
         const favoriteInfo = {
             
@@ -65,13 +65,40 @@ const UserDetails = () => {
                       });
                 }
             })
-        // Add your logic for handling the request contact action here
     };
 
-    const handleRequestContact = (userId) => {
-        console.log("Add Favorite ID:", userId);
-        // Add your logic for handling the add favorite action here
-    };
+    // const handleRequestContact = (userId) => {
+    //     console.log("Add request ID:", userId);
+
+    //     const requestedInfo = {
+            
+    //         requestedId: userId,
+    //         requesterId: loggedUser._id,
+    //         requesterEmail: user.email
+    //     }
+    //     // console.log(favoriteInfo);
+    //     axiosSecure.post('/request', requestedInfo)
+    //         .then(res => {
+    //             if (res.data.insertedId) {
+    //                 console.log('user added to db');
+    //                 Swal.fire({
+    //                     position: "top-center",
+    //                     icon: "success",
+    //                     title: "Added to Favorite!",
+    //                     showConfirmButton: false,
+    //                     timer: 1500
+    //                   });
+    //             }
+    //             else{
+    //                 Swal.fire({
+    //                     icon: "success",
+    //                     title: "Requested contac...?",
+    //                     text: "This Bio Already in Favorite!",
+    //                     footer: '<a href="#">Find More.</a>'
+    //                   });
+    //             }
+    //         })
+    // };
 
 
     return (
@@ -115,13 +142,12 @@ const UserDetails = () => {
                                     </div>
                                     <div className="col-span-1">
                                         <div className="flex justify-between mt-2">
-                                            <button
-                                                onClick={() => handleRequestContact(bioData._id)}
+                                            <Link to={`/checkout/${bioData._id}`}
                                                 className="text-pink-800 flex items-center gap-1 border rounded-lg px-2 border-pink-600 bg-pink-100 hover:bg-pink-900 hover:text-white hover:transform hover:scale-95"
                                             >
                                                 <FaPhone></FaPhone>
                                                 <p>Request contact Info</p>
-                                            </button>
+                                            </Link>
                                         </div>
                                         <div className="flex justify-between mt-2">
                                             <button

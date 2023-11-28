@@ -9,6 +9,7 @@ import Dashboard from "../Layout/Dashboard";
 import UserInfo from "../Dashboard/UserInfo";
 import EditBio from "../Dashboard/EditBio";
 import UserDetails from "../Home/UserDetails";
+import Checkout from "../Payment/Checkout";
   
   
   export const router = createBrowserRouter([
@@ -31,6 +32,10 @@ import UserDetails from "../Home/UserDetails";
             {
                 path: '/userDetail/:id',
                 element: <UserDetails></UserDetails>
+            },
+            {
+                path: '/checkout/:id',
+                element: <Checkout></Checkout>
             },
             
         ]
