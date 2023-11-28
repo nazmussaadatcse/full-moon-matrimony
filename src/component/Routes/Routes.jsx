@@ -10,6 +10,8 @@ import UserInfo from "../Dashboard/UserInfo";
 import EditBio from "../Dashboard/EditBio";
 import UserDetails from "../Home/UserDetails";
 import Checkout from "../Payment/Checkout";
+import MyContactRequest from "../Dashboard/MyContactRequest";
+import MyFavoriteBiodata from "../Dashboard/myFavoriteBiodata";
   
   
   export const router = createBrowserRouter([
@@ -51,6 +53,14 @@ import Checkout from "../Payment/Checkout";
             {
                 path: 'editInfo',
                 element: <EditBio></EditBio>
+            },
+            {
+                path: 'myContactRequest',
+                element: <MyContactRequest></MyContactRequest>
+            },
+            {
+                path: 'myFavoriteBiodata',
+                element: <MyFavoriteBiodata></MyFavoriteBiodata>
             },
            
           

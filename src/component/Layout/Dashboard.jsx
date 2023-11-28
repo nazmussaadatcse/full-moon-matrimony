@@ -13,10 +13,10 @@ const Dashboard = () => {
                         <NavLink to={"/dashboard/userInfo"}  className="block py-2 bg-slate-100 px-4 rounded-md hover:bg-purple-300">View Biodata</NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/dashboard/contactRequest"} className="block py-2 bg-slate-100 px-4 rounded-md hover:bg-purple-300">My Contact Request</NavLink>
+                        <NavLink to={"/dashboard/myContactRequest"} className="block py-2 bg-slate-100 px-4 rounded-md hover:bg-purple-300">My Contact Request</NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/dashboard/favoriteInfo"} className="block py-2 bg-slate-100 px-4 rounded-md hover:bg-purple-300">Favourites Biodata</NavLink>
+                        <NavLink to={"/dashboard/myFavoriteBiodata"} className="block py-2 bg-slate-100 px-4 rounded-md hover:bg-purple-300">Favourites Biodata</NavLink>
                     </li>
                     <li>
                         <button className="block py-2  px-4 rounded-md bg-purple-600 text-white hover:bg-purple-700">Logout</button>

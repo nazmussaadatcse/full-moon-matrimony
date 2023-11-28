@@ -67,38 +67,6 @@ const UserDetails = () => {
             })
     };
 
-    // const handleRequestContact = (userId) => {
-    //     console.log("Add request ID:", userId);
-
-    //     const requestedInfo = {
-            
-    //         requestedId: userId,
-    //         requesterId: loggedUser._id,
-    //         requesterEmail: user.email
-    //     }
-    //     // console.log(favoriteInfo);
-    //     axiosSecure.post('/request', requestedInfo)
-    //         .then(res => {
-    //             if (res.data.insertedId) {
-    //                 console.log('user added to db');
-    //                 Swal.fire({
-    //                     position: "top-center",
-    //                     icon: "success",
-    //                     title: "Added to Favorite!",
-    //                     showConfirmButton: false,
-    //                     timer: 1500
-    //                   });
-    //             }
-    //             else{
-    //                 Swal.fire({
-    //                     icon: "success",
-    //                     title: "Requested contac...?",
-    //                     text: "This Bio Already in Favorite!",
-    //                     footer: '<a href="#">Find More.</a>'
-    //                   });
-    //             }
-    //         })
-    // };
 
 
     return (

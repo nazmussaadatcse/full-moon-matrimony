@@ -15,7 +15,7 @@ const Checkout = () => {
 
     return (
         <div>
-            <h2>payment for {ids}</h2>
+            {/* <h2>payment for {ids}</h2> */}
             <Elements stripe={stripePromise}>
                 <CheckoutForm id={ids}></CheckoutForm>
             </Elements>
