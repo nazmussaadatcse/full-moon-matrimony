@@ -14,6 +14,8 @@ import MyContactRequest from "../Dashboard/MyContactRequest";
 import MyFavoriteBiodata from "../Dashboard/myFavoriteBiodata";
 import ManageUsers from "../Dashboard/Admin/ManageUsers";
 import AdminDashboard from "../Dashboard/Admin/AdminDashboard";
+import ApprovedContactRequest from "../Dashboard/Admin/ApprovedContactRequest";
+import ApprovedPremium from "../Dashboard/Admin/ApprovedPremium";
   
   
   export const router = createBrowserRouter([
@@ -71,6 +73,14 @@ import AdminDashboard from "../Dashboard/Admin/AdminDashboard";
             {
                 path: 'adminDashboard',
                 element: <AdminDashboard></AdminDashboard>
+            },
+            {
+                path: 'approvedContactRequest',
+                element: <ApprovedContactRequest></ApprovedContactRequest>
+            },
+            {
+                path: 'approvedPremium',
+                element: <ApprovedPremium></ApprovedPremium>
             },
            
           
