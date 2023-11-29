@@ -103,6 +103,9 @@ const ApprovedContactRequest = () => {
                                                 Email
                                             </th>
                                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Payment Status
+                                            </th>
+                                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 Action
                                             </th>
                                         </tr>
@@ -120,6 +123,11 @@ const ApprovedContactRequest = () => {
                                                 <td className="px-6 py-4 whitespace-nowrap">
                                                     <div className="text-sm text-gray-500">{item?.refEmail}</div>
                                                 </td>
+                                                <td className="px-6 py-4 whitespace-nowrap">
+                                                    <div className="text-sm text-gray-500">Paid [BDT 500]</div>
+                                                </td>
+                                                
+                                                
                                                 {
                                                     item?.status === 'pending' ?
                                                         <button onClick={() => handleApprove(item?._id)} className="mt-2 bg-pink-500 hover:bg-pink-600 text-white py-1 px-3 rounded mx-1">

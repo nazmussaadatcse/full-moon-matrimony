@@ -16,6 +16,8 @@ import ManageUsers from "../Dashboard/Admin/ManageUsers";
 import AdminDashboard from "../Dashboard/Admin/AdminDashboard";
 import ApprovedContactRequest from "../Dashboard/Admin/ApprovedContactRequest";
 import ApprovedPremium from "../Dashboard/Admin/ApprovedPremium";
+import AllBioData from "../Home/AllBioData";
+import PrivateRoutes from "./PrivateRoutes";
   
   
   export const router = createBrowserRouter([
@@ -37,11 +39,17 @@ import ApprovedPremium from "../Dashboard/Admin/ApprovedPremium";
             },
             {
                 path: '/userDetail/:id',
-                element: <UserDetails></UserDetails>
+                element: <PrivateRoutes>
+                    <UserDetails></UserDetails>
+                </PrivateRoutes>
             },
             {
                 path: '/checkout/:id',
                 element: <Checkout></Checkout>
+            },
+            {
+                path: '/allBioData',
+                element: <AllBioData></AllBioData>
             },
             
         ]

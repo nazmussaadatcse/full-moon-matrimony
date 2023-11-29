@@ -3,28 +3,56 @@ import useContactRequest from "../hooks/useContactRequest";
 import useUsers from "../hooks/useUsers";
 import { AuthContext } from "../Providers/AuthProvider";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 
 const MyContactRequest = () => {
 
     const { user } = useContext(AuthContext);
-    const [reqUsers] = useContactRequest();
+    const [reqUsers, refetch] = useContactRequest();
     const [users] = useUsers();
-
-    // const userRequestedIds = reqUsers
-    //     .filter(reqUser => reqUser?.email === user?.email) // Filter based on user email
-    //     .map(reqUser => reqUser?.refUserId); // Map to extract refUserId
-    // console.log(userRequestedIds);
-
-
-    // const usersMatchingRequestedIds = users.filter(userData =>
-    //     userRequestedIds.includes(userData._id)
-    // );
-    // console.log(usersMatchingRequestedIds);
+    const axiosSecure = useAxiosSecure();
 
     const filteredReqUsers = reqUsers.filter((reqUser) => reqUser?.email === user?.email);
     console.log(filteredReqUsers);
 
+
+    const handleDelete = (itemId) => {
+        const userEmail = user?.email;
+
+        console.log(`Deleting item with ID: ${itemId} for user email: ${userEmail}`);
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You will lose your payment data too",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete Everything!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/requestedUsers/${itemId}`)
+                    .then(response => {
+                        console.log('Deletion successful');
+                        console.log(response);
+                        refetch() // refetch favUsers
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your Favorite Bio been deleted.",
+                            icon: "success"
+                        });
+
+                    })
+                    .catch(error => {
+                        console.error('Deletion failed:', error);
+                    });
+
+            }
+        });
+
+    };
 
 
 
@@ -44,6 +72,10 @@ const MyContactRequest = () => {
                         <p className="border-b border-gray-200 pb-2"><span className="font-semibold">Status:</span> {item?.status}</p>
                         <p className="border-b border-gray-200 pb-2"><span className="font-semibold">Email:</span> {item?.status === 'pending' ? 'Requested' : item?.refEmail}</p>
                         <p className="border-b border-gray-200 pb-2"><span className="font-semibold">Phone:</span> {item?.status === 'pending' ? 'Requested' : item?.refMobileNumber} </p>
+                        <p className="border-b border-gray-200 pb-2"><span className="font-semibold">Payment Status: Paid(500BDT)</span></p>
+                        <button onClick={() => handleDelete(item?._id)} className="mt-2 bg-pink-500 hover:bg-pink-600 text-white py-1 px-3 rounded mx-1">
+                            Delete
+                        </button>
                         {/* Additional fields as needed */}
                     </div>
                 ))}
@@ -74,6 +106,12 @@ const MyContactRequest = () => {
                                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 Phone
                                             </th>
+                                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Payment Status
+                                            </th>
+                                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Action
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody className="bg-white divide-y divide-gray-200">
@@ -93,6 +131,14 @@ const MyContactRequest = () => {
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-nowrap">
                                                     <div className="text-sm text-gray-500">{item?.status === 'pending' ? 'Requested' : item?.refMobileNumber}</div>
+                                                </td>
+                                                <td className="px-6 py-4 whitespace-nowrap">
+                                                    <div className="text-sm text-gray-500">Paid (500BDT)</div>
+                                                </td>
+                                                <td className="px-6 py-4 whitespace-nowrap">
+                                                    <button onClick={() => handleDelete(item?._id)} className="mt-2 bg-pink-500 hover:bg-pink-600 text-white py-1 px-3 rounded mx-1">
+                                                        Delete
+                                                    </button>
                                                 </td>
                                             </tr>
                                         ))}

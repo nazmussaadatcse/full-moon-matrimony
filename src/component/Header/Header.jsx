@@ -18,7 +18,7 @@ import { AuthContext } from '../Providers/AuthProvider';
 
 const listItems = [
     { text: 'Home', path: '/' },
-    { text: 'Bio data', path: '/bio' },
+    { text: 'BioData', path: '/allBioData' },
     { text: 'Dashboard', path: '/dashboard/userInfo' },
     { text: 'About Us', path: '/about' },
     { text: 'Contact Us', path: '/contact' },
@@ -80,7 +80,7 @@ const Header = () => {
                                     : user.displayName}
                                 </p>
                                 <img className='h-12 w-12 rounded-full p-1' src={user.photoURL} alt="" />
-                                <h2>{user.email}</h2>
+                                {/* <h2>{user.email}</h2> */}
                             </div>
                             <Button onClick={handleLogout} color="inherit">
                                 LogOut

@@ -191,7 +191,7 @@ const ManageUsers = () => {
                                                                 Premium User
                                                             </button>
                                                             :
-                                                            <button onClick={() => makeAdmin(item?._id)} className="mt-2 bg-pink-500 hover:bg-pink-600 text-white py-1 px-3 rounded mx-1">
+                                                            <button onClick={() => makePremium(item?._id)} className="mt-2 bg-pink-500 hover:bg-pink-600 text-white py-1 px-3 rounded mx-1">
                                                                 Make Premium
                                                             </button>
                                                     }
