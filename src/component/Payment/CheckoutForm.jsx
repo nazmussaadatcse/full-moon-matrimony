@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import useUsers from "../hooks/useUsers";
 
 
 const CheckoutForm = ({ id }) => {
@@ -17,6 +18,15 @@ const CheckoutForm = ({ id }) => {
     // const axiosPublic = useAxiosPublic();
     const { user } = useContext(AuthContext)
     const refUserId = id;
+    const [users] = useUsers();
+
+    const myData = users.find(me => me.email === user?.email);
+    const reqData = users.find(req => req._id === id);
+
+    console.log('reqData', reqData?.name);
+    console.log('myData', myData?.bioId);
+
+
 
 
     const totalPrice = 500;
@@ -103,10 +113,15 @@ const CheckoutForm = ({ id }) => {
 
                         const payment = {
                             email: user.email,
+                            name: user.name,
                             price: totalPrice,
                             transactionId: paymentIntent.id,
                             date: new Date().toLocaleString(),
                             refUserId: refUserId,
+                            refBioId:reqData?.bioId,
+                            refName: reqData?.name,
+                            refEmail: reqData?.email,
+                            refMobileNumber: reqData?.mobileNumber,
                             status: 'pending'
                         }
                         const res = await axiosSecure.post('/payments', payment);
@@ -119,7 +134,7 @@ const CheckoutForm = ({ id }) => {
                                 position: "top-center",
                                 icon: "success",
                                 title: "Payment Completed!",
-                                text: `TxId: ${transactionId}`,
+                                text: `TxId: ${paymentIntent?.id}`,
                                 showConfirmButton: false,
                                 timer: 2000
                             });
@@ -137,14 +152,20 @@ const CheckoutForm = ({ id }) => {
     return (
         <div className="flex justify-center items-center h-screen">
             <form className="w-full max-w-md p-8 bg-white shadow-md rounded-lg" onSubmit={handleSubmit}>
-                { transactionId && 
+                {transactionId &&
                     <div className="border my-4 p-1">
-                     <p className="font-bold text-black text-sm">Payment Succeed.</p>
-                     <p className="font-bold text-green-500 text-sm mb">Transaction ID [{transactionId}]</p>
-                </div>
+                        <p className="font-bold text-black text-sm">Payment Succeed.</p>
+                        <p className="font-bold text-green-500 text-sm mb">Transaction ID [{transactionId}]</p>
+                    </div>
                 }
-                <h2 className="text-2xl text-black font-semibold mb-2">Pay with Stripe</h2>
-                <h2 className="text-pink-500 text-sm font-bold mb-6">BDT 500.00 only!</h2>
+                <h2 className="text-2xl text-blue-500 font-semibold mb-2">Pay with Stripe</h2>
+
+                <div className="border p-2 mb-4">
+                    <h2 className="text-pink-900 text-sm font-semibold mb-1">BioData ID: [{reqData?.bioId}]</h2>
+                    <h2 className="text-pink-900 text-sm font-semibold mb-1">My BioData ID: [{myData?.bioId}]</h2>
+                    <h2 className="text-pink-900 text-sm font-semibold mb-1">My Email: [{user?.email}]</h2>
+                <h2 className="text-pink-500 text-sm font-bold">Amount: [BDT 500.00] Only!</h2>
+                </div>
 
                 <div className="mb-8">
                     {/* Your CardElement component goes here */}
@@ -165,13 +186,15 @@ const CheckoutForm = ({ id }) => {
                         }}
                     />
                 </div>
+                {
+                    error && <p className="text-red-500 font-bold text-sm stroke-black p-2">Error! {error}..!!</p>
+                }
                 <button
                     className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     type="submit"
                     disabled={!stripe || !clientSecret}
                 >
                     Pay
-                    <p className="text-red-800 stroke-black">{error}</p>
                 </button>
 
             </form>

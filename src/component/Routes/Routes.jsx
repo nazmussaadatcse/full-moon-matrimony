@@ -12,6 +12,8 @@ import UserDetails from "../Home/UserDetails";
 import Checkout from "../Payment/Checkout";
 import MyContactRequest from "../Dashboard/MyContactRequest";
 import MyFavoriteBiodata from "../Dashboard/myFavoriteBiodata";
+import ManageUsers from "../Dashboard/Admin/ManageUsers";
+import AdminDashboard from "../Dashboard/Admin/AdminDashboard";
   
   
   export const router = createBrowserRouter([
@@ -61,6 +63,14 @@ import MyFavoriteBiodata from "../Dashboard/myFavoriteBiodata";
             {
                 path: 'myFavoriteBiodata',
                 element: <MyFavoriteBiodata></MyFavoriteBiodata>
+            },
+            {
+                path: 'manageUsers',
+                element: <ManageUsers></ManageUsers>
+            },
+            {
+                path: 'adminDashboard',
+                element: <AdminDashboard></AdminDashboard>
             },
            
           
