@@ -1,4 +1,5 @@
 
+import { Helmet } from 'react-helmet';
 import useContactRequest from '../../hooks/useContactRequest';
 import useUsers from '../../hooks/useUsers';
 import PiChart from './PiChart';
@@ -21,7 +22,11 @@ const AdminDashboard = () => {
 
 
     return (
-        <div className='flex flex-col justify-center items-center bg-slate-100 p-16'>
+        <div className='flex flex-col j
+        ustify-center items-center bg-slate-100 p-16'>
+            <Helmet>
+                <title>FMM | Admin Dashboard</title>
+            </Helmet>
             <div className='bg-100'>
                 <PiChart
                     maleUser={maleUser}

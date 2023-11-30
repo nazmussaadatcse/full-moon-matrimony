@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import useUsers from "../hooks/useUsers";
 import CustomizedTables from "./CustomizedTables";
+import { Helmet } from "react-helmet";
 
 
 
@@ -15,6 +16,9 @@ const UserInfo = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>FMM | View BioData</title>
+            </Helmet>
             {loggedUser && <CustomizedTables data={loggedUser} />}
         </div>
     );

@@ -5,7 +5,7 @@ import { AuthContext } from "../Providers/AuthProvider";
 
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000'
+    baseURL: 'https://full-moon-matrimony-server.vercel.app'
 })
 
 const useAxiosSecure = () => {

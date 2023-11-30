@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 import useUsers from "../hooks/useUsers";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import useStories from "../hooks/useStories";
+import { Helmet } from "react-helmet";
 
 
 
@@ -55,6 +56,9 @@ const SuccessStoriesAdminPanel = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>FMM | Success Stories</title>
+            </Helmet>
             <div className="flex items-center justify-center my-4">
                 <h1 className="text-2xl text-pink-700 font-semibold mb-4">Success Stories</h1>
             </div>

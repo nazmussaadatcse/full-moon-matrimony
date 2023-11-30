@@ -5,6 +5,7 @@ import useAxiosSecure from "../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 import useUsers from "../hooks/useUsers";
+import { Helmet } from "react-helmet";
 
 
 
@@ -98,6 +99,9 @@ const EditBio = () => {
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-base-50">
+            <Helmet>
+                <title>FMM | Edit BioData</title>
+            </Helmet>
             <div className="max-w-xl w-full bg-base-100 shadow-2xl rounded-lg p-8">
                 {
                     user &&

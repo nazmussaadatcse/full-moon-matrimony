@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useUsersPublic from "../hooks/useUsersPublic";
+import { Helmet } from "react-helmet";
 
 const AllBioData = () => {
     const [users,,,] = useUsersPublic();
@@ -21,7 +22,7 @@ const AllBioData = () => {
     };
 
     const filteredUsers = users.filter(user => {
-        const matchesSearchInput = user.occupation.toLowerCase().includes(searchInput.toLowerCase());
+        const matchesSearchInput = user.occupation?.toLowerCase().includes(searchInput.toLowerCase());
         const matchesCity = selectedCity === '' || user.permanentDivisionName === selectedCity;
         const matchesBiodata = selectedBiodata === '' || user.biodataType === selectedBiodata;
 
@@ -31,6 +32,9 @@ const AllBioData = () => {
 
     return (
         <div className="mx-auto">
+            <Helmet>
+                <title>Full Moon Matrimony | BioData</title>
+            </Helmet>
             {/* Search Bar */}
             <div className="p-4 mx-auto flex flex-col items-center justify-center gap-2 md:flex-row md:justify-center md:items-center">
                 {/* Search Input */}

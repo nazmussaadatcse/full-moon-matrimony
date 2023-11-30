@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import Banner from "./Banner";
 import BioDatas from "./BioDatas";
 import FaqSection from "./FaqSection";
@@ -9,12 +10,15 @@ import HowWebsitesWork from "./howWebsitesWork";
 const Home = () => {
     return (
         <div>
+            <Helmet>
+                <title>Full Moon Matrimony | Home</title>
+            </Helmet>
             <Banner></Banner>
+            <BioDatas></BioDatas>
             <HowWebsitesWork></HowWebsitesWork>
             <SuccessCounter></SuccessCounter>
             <SuccessStory></SuccessStory>
             <FaqSection></FaqSection>
-            <BioDatas></BioDatas>
         </div>
     );
 };

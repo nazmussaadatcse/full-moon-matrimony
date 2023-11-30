@@ -5,6 +5,7 @@ import useAxiosSecure from '../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 import useUsers from '../hooks/useUsers';
 import useAdmin from '../hooks/useAdmin';
+import { Helmet } from 'react-helmet';
 
 const Dashboard = () => {
 
@@ -88,6 +89,9 @@ const Dashboard = () => {
 
     return (
         <div className="flex">
+            <Helmet>
+                <title>FMM | Dashboard</title>
+            </Helmet>
             {
                 isAdmin ?
                     <div className="w-64 p-8 min-h-full bg-pink-300">

@@ -17,7 +17,7 @@ const BioDatas = () => {
     return (
 
         <div>
-            <h2 className="text-2xl font-bold mb-8 text-center text-pink-900">  Premium Profiles</h2>
+            <h2 className="text-2xl font-bold my-8 text-center text-pink-900">  Premium Profiles</h2>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
 
                 {filteredUsers.map((bioData) => (

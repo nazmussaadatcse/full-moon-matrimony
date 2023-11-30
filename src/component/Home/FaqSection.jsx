@@ -32,43 +32,43 @@ const FaqAccordion = () => {
     };
 
     return (
-        <div className='my-16'>
-            <h2 className="text-2xl font-bold my-8 text-center text-pink-900"> FAQ</h2>
-            <div className="flex justify-center items-center px-16">
-            
-            <div className="w-1/2 p-12 mb-8">
-                <div className="accordion">
-                    {faqData.map((faq, index) => (
-                        <div className="mb-4" key={index}>
-                            <input
-                                type="checkbox"
-                                id={`question${index + 1}`}
-                                className="hidden"
-                                checked={activeIndex === index}
-                            />
-                            <label
-                                htmlFor={`question${index + 1}`}
-                                className="flex text-pink-500 justify-between items-center bg-pink-200 hover:bg-pink-300 cursor-pointer py-2 px-4 rounded-lg font-semibold"
-                                onClick={() => handleAccordion(index)}
-                            >
-                                <span>{faq.question}</span>
-                                < FaArrowDown className='text-pink-600'>
-                                </FaArrowDown>
-                            </label>
-                            <div className={`panel mt-2 ${activeIndex === index ? '' : 'hidden'}`}>
-                                <p className="py-2 rounded-md text-pink-800 px-4 border">{faq.answer}</p>
-                            </div>
+        <div className='my-8 px-4 lg:px-0'> {/* Adjusting overall padding for mobile and removing margin */}
+    <h2 className="text-2xl font-bold my-4 text-center uppercase text-pink-900"> frequently asked question</h2>
+    <div className="flex flex-col lg:flex-row justify-center items-center lg:items-start"> {/* Flex direction adjustment for desktop */}
+        <div className="lg:w-1/2 lg:p-12 mb-8">
+            <div className="accordion">
+                {faqData.map((faq, index) => (
+                    <div className="mb-4" key={index}>
+                        <input
+                            type="checkbox"
+                            id={`question${index + 1}`}
+                            className="hidden"
+                            checked={activeIndex === index}
+                        />
+                        <label
+                            htmlFor={`question${index + 1}`}
+                            className="flex text-pink-500 justify-between items-center bg-pink-200 hover:bg-pink-300 cursor-pointer py-2 px-4 rounded-lg font-semibold"
+                            onClick={() => handleAccordion(index)}
+                        >
+                            <span>{faq.question}</span>
+                            < FaArrowDown className='text-pink-600'>
+                            </FaArrowDown>
+                        </label>
+                        <div className={`panel mt-2 ${activeIndex === index ? '' : 'hidden'}`}>
+                            <p className="py-2 rounded-md text-pink-800 px-4 border">{faq.answer}</p>
                         </div>
-                    ))}
-                </div>
+                    </div>
+                ))}
             </div>
+        </div>
 
-            <div className="w-1/2 p-4">
-                {/* Add your image */}
-                <img src="https://i.ibb.co/ZLf8CMX/faq-image-fmm.png" alt="Your Image" className="w-full" />
-            </div>
+        <div className="lg:w-1/2 lg:p-4">
+            {/* Add your image */}
+            <img src="https://i.ibb.co/ZLf8CMX/faq-image-fmm.png" alt="Your Image" className="w-full" />
         </div>
-        </div>
+    </div>
+</div>
+
     );
 };
 

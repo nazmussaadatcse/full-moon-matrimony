@@ -5,6 +5,7 @@ import { AuthContext } from "../Providers/AuthProvider";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet";
 
 
 const MyContactRequest = () => {
@@ -59,6 +60,9 @@ const MyContactRequest = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>FMM | My Contact Request</title>
+            </Helmet>
             <div className="flex items-center justify-center my-4">
                 <h1 className="text-2xl text-pink-700 font-semibold mb-4">My Contact Request collection</h1>
             </div>

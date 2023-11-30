@@ -5,6 +5,7 @@ import useUsers from "../hooks/useUsers";
 import { Link } from "react-router-dom";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 
 const MyFavoriteBiodata = () => {
@@ -79,6 +80,9 @@ const MyFavoriteBiodata = () => {
     // console.log(favUsers);
     return (
         <div>
+            <Helmet>
+                <title>FMM | My Favorite BioData</title>
+            </Helmet>
             <div className="flex items-center justify-center my-4">
                 <h1 className="text-2xl text-pink-700 font-semibold mb-4">My Favorite Bio Data collection</h1>
 

@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../hooks/useAxiosSecure';
 import { AuthContext } from '../Providers/AuthProvider';
+import { Helmet } from 'react-helmet';
 
 
 const GotMarried = () => {
@@ -37,6 +38,9 @@ const GotMarried = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>FMM | Got Married</title>
+            </Helmet>
             <h2 className="text-2xl font-bold mb-8 text-center text-pink-900"> Got Married?</h2>
             <h2 className=" font-bold mb-8 text-center text-pink-500">Please Share your success story here..</h2>
             <form onSubmit={handleSubmit(onSubmit)} className="max-w-xl mx-auto">

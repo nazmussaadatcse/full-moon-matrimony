@@ -4,6 +4,7 @@ import useUsers from "../../hooks/useUsers";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useApprovePremium from "../../hooks/useApprovePremium";
+import { Helmet } from "react-helmet";
 
 
 const ApprovedPremium = () => {
@@ -54,6 +55,9 @@ const ApprovedPremium = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>FMM | Approved Premium</title>
+            </Helmet>
             <div className="flex items-center justify-center my-4">
                 <h1 className="text-2xl text-pink-700 font-semibold mb-4">Approved Contact Request</h1>
             </div>

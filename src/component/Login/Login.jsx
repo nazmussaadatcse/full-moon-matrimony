@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from "../Providers/AuthProvider";
 import SocialLogin from "./SocialLogin";
+import { Helmet } from "react-helmet";
 
 
 
@@ -72,6 +73,9 @@ const Login = () => {
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-base-50">
+            <Helmet>
+                <title>Full Moon Matrimony | Login</title>
+            </Helmet>
     <div className="max-w-xl w-full bg-base-100 shadow-2xl rounded-lg p-8">
         <div className="text-center">
             <img className="w-1/3 mx-auto" src="https://i.ibb.co/kJ4Jjzm/zero-dollar-bites-logo.png" alt="" />

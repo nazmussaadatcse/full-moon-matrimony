@@ -7,6 +7,7 @@ import { AuthContext } from "../Providers/AuthProvider";
 import SocialLogin from "../Login/SocialLogin";
 import useUsersPublic from "../hooks/useUsersPublic";
 import useAxiosPublic from "../hooks/useAxiosPublic";
+import { Helmet } from "react-helmet";
 
 
 
@@ -80,6 +81,9 @@ const SignUp = () => {
 
     return (
         <div className=" flex items-center justify-center bg-gray-100">
+            <Helmet>
+                <title>Full Moon Matrimony | SignUp</title>
+            </Helmet>
             <div className="hero-content p-12 bg-white rounded-md shadow-2xl max-w-xl"> {/* Increased max-width */}
                 <div className="text-center p-8">
                     <img className="w-1/3 mx-auto" src="https://i.ibb.co/kJ4Jjzm/zero-dollar-bites-logo.png" alt="" />

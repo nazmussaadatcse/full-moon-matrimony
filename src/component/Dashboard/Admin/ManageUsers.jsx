@@ -1,6 +1,7 @@
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useUsers from "../../hooks/useUsers";
+import { Helmet } from "react-helmet";
 
 
 
@@ -98,6 +99,9 @@ const ManageUsers = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>FMM | Manage Users</title>
+            </Helmet>
             <div className="flex items-center justify-center my-4">
                 <h1 className="text-2xl text-pink-700 font-semibold mb-4">Manage Users</h1>
             </div>
