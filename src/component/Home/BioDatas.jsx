@@ -7,10 +7,12 @@ const BioDatas = () => {
     // console.log(users);
 
     const filteredUsers = users
-        .filter(user => user.userType === 'premium')
-        .sort((a, b) => a.age - b.age) // Sort users by age in asc to desc
-        .slice(0, 6); //first 6 users
-    console.log(filteredUsers);
+    .filter(user => user.userType === 'premium' && (user.biodataType !== undefined && user.biodataType !== null && user.biodataType !== ''))
+    .sort((a, b) => a.age - b.age) // Sort users by age in ascending order
+    .slice(0, 6); // First 6 users
+console.log(filteredUsers);
+
+
 
 
 
