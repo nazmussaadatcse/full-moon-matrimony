@@ -10,12 +10,15 @@ import Swal from "sweetalert2";
 
 const UserDetails = () => {
 
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const [users, refetch, femaleUsers, maleUsers] = useUsersPublic();
     const [dynamicBioType, setdynamicBioType] = useState([]);
     const idx = useParams();
     const id = (idx.id);
     const axiosSecure = useAxiosSecure();
+
+    const currentUser = users.find(userData => userData?.email === user?.email);
+
 
     const filteredUsers = users.filter(user => user.biodataType !== '');
     const userDetails = filteredUsers.find(user => user._id === id);
@@ -32,13 +35,16 @@ const UserDetails = () => {
 
 
 
-    const loggedUser = users.find(person=> person?.email === user?.email);
+
+
+
+    const loggedUser = users.find(person => person?.email === user?.email);
 
     const handleAddFavorite = (userId) => {
         console.log("Favorite Contact ID:", userId);
 
         const favoriteInfo = {
-            
+
             favId: userId,
             myId: loggedUser._id,
             myEmail: user.email
@@ -54,15 +60,15 @@ const UserDetails = () => {
                         title: "Added to Favorite!",
                         showConfirmButton: false,
                         timer: 1500
-                      });
+                    });
                 }
-                else{
+                else {
                     Swal.fire({
                         icon: "error",
                         title: "Like Too Much...?",
                         text: "This Bio Already in Favorite!",
                         footer: '<a href="#">Find More.</a>'
-                      });
+                    });
                 }
             })
     };
@@ -105,8 +111,26 @@ const UserDetails = () => {
                                         <p><strong>Expected Partner Age:</strong> {bioData.expectedPartnerAge}</p>
                                         <p><strong>Expected Partner Height:</strong> {bioData.expectedPartnerHeight}</p>
                                         <p><strong>Expected Partner Weight:</strong> {bioData.expectedPartnerWeight}</p>
-                                        <p><strong>Email:</strong> {bioData.email}</p>
-                                        <p><strong>Mobile Number:</strong> {bioData.mobileNumber}</p>
+                                        <p>
+                                            <strong>Email: </strong>
+                                            {
+                                                currentUser?.userType === 'premium' ?
+                                                    bioData?.email 
+                                                    :
+                                                    'Request Contact' 
+                                            }
+                                        </p>
+                                        <p>
+                                            <strong>Mobile Number: </strong>
+                                            {
+                                                currentUser?.userType === 'premium' ?
+                                                    bioData?.mobileNumber 
+                                                    :
+                                                    'Request Contact' 
+                                            }
+                                        </p>
+
+                                        
                                     </div>
                                     <div className="col-span-1">
                                         <div className="flex justify-between mt-2">

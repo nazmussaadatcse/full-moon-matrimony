@@ -14,7 +14,7 @@ const SocialLogin = () => {
     const navigate = useNavigate();
     const axiosPublic = useAxiosPublic();
 
-    const [users,] = useUsersPublic();
+    const [users,,,] = useUsersPublic();
     const bioId = (users.length + 1);
     console.log(bioId);
 
@@ -60,8 +60,8 @@ const SocialLogin = () => {
             <div className="flex justify-center">
                 <div className=" text-center p-2 m-2">
                     <hr />
-                    <p className="font-semibold text-green-700">Login with Google</p>
-                    <button onClick={handleGoogleLogIn} className="rounded-full text-2xl shadow-md text-pink-900 hover:bg-green-700 hover:rounded-full p-2"><FaGoogle></FaGoogle></button>
+                    <p className="font-semibold text-pink-700">Login with Google</p>
+                    <button onClick={handleGoogleLogIn} className="rounded-full text-2xl shadow-md text-pink-900 hover:bg-pink-700 hover:rounded-full p-2"><FaGoogle></FaGoogle></button>
                 </div>
             </div>
         </div>

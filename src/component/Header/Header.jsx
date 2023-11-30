@@ -52,12 +52,12 @@ const Header = () => {
     );
 
     const desktopHeader = (
-        <AppBar position="static" sx={{ backgroundColor: 'red' }}>
+        <AppBar position="static" sx={{ backgroundColor: 'white', color:'black'}}>
             <Toolbar>
                 <IconButton edge="start" color="inherit" aria-label="menu">
                     {/* Replace with your logo or icon */}
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1, textAlign: 'center' }}>
-                        Logo/Title
+                        <img className='w-full h-24' src="https://i.ibb.co/2vqGtgb/fmmlogo.png" alt="" />
                     </Typography>
                 </IconButton>
 
@@ -72,7 +72,7 @@ const Header = () => {
 
                 {
                     user ?
-                    
+
                         <div className='flex justify-center items-center'>
                             <div className='flex justify-center items-center border'>
                                 <p className='p-1'>{user.displayName && user.displayName.length > 8
@@ -96,7 +96,7 @@ const Header = () => {
     );
 
     const mobileHeader = (
-        <AppBar position="static" sx={{ backgroundColor: 'red' }}>
+        <AppBar position="static" sx={{ backgroundColor: 'white', color:'black' }}>
             <Toolbar>
                 <IconButton
                     edge="start"
@@ -105,6 +105,7 @@ const Header = () => {
                     onClick={toggleDrawer(true)}
                 >
                     <MenuIcon />
+                    <img className='w-12 h-12 ml-4' src="https://i.ibb.co/2vqGtgb/fmmlogo.png" alt="" />
                 </IconButton>
 
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1, textAlign: 'center' }}>
@@ -114,7 +115,9 @@ const Header = () => {
                 {
                     user ?
                         <div className='flex justify-center items-center'>
+                            
                             <div className='flex justify-center items-center border'>
+                                
                                 <p className='p-1'>{user.displayName && user.displayName.length > 8
                                     ? `${user.displayName.slice(0, 8)}`
                                     : user.displayName}

@@ -1,6 +1,6 @@
 import {
     createBrowserRouter
-  } from "react-router-dom";
+} from "react-router-dom";
 import Main from "../Main/Main";
 import Home from "../Home/Home";
 import SignUp from "../SignUp/SignUp";
@@ -19,9 +19,9 @@ import ApprovedPremium from "../Dashboard/Admin/ApprovedPremium";
 import AllBioData from "../Home/AllBioData";
 import PrivateRoutes from "./PrivateRoutes";
 import AdminRoute from "./AdminRoute";
-  
-  
-  export const router = createBrowserRouter([
+
+
+export const router = createBrowserRouter([
     {
         path: "/",
         element: <Main></Main>,
@@ -46,18 +46,22 @@ import AdminRoute from "./AdminRoute";
             },
             {
                 path: '/checkout/:id',
-                element: <Checkout></Checkout>
+                element: <PrivateRoutes>
+                    <Checkout></Checkout>
+                </PrivateRoutes>
             },
             {
                 path: '/allBioData',
                 element: <AllBioData></AllBioData>
             },
-            
+
         ]
     },
     {
         path: "dashboard",
-        element: <Dashboard></Dashboard>,
+        element: <PrivateRoutes>
+            <Dashboard></Dashboard>
+        </PrivateRoutes>,
         children: [
             {
                 path: 'userInfo',
@@ -77,25 +81,31 @@ import AdminRoute from "./AdminRoute";
             },
             {
                 path: 'manageUsers',
-                element: <ManageUsers></ManageUsers>
-            },
-            {
-                path: 'adminDashboard',
                 element: <AdminRoute>
-                    <AdminDashboard></AdminDashboard>
+                    <ManageUsers></ManageUsers>
                 </AdminRoute>
             },
             {
+                path: 'adminDashboard',
+                element:  <AdminRoute>
+                        <AdminDashboard></AdminDashboard>
+                    </AdminRoute>
+            },
+            {
                 path: 'approvedContactRequest',
-                element: <ApprovedContactRequest></ApprovedContactRequest>
+                element: <AdminRoute>
+                    <ApprovedContactRequest></ApprovedContactRequest>
+                </AdminRoute>
             },
             {
                 path: 'approvedPremium',
-                element: <ApprovedPremium></ApprovedPremium>
+                element: <AdminRoute>
+                    <ApprovedPremium></ApprovedPremium>
+                </AdminRoute>
             },
-           
-          
-            
+
+
+
         ]
     },
-  ]);
+]);

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import useUsersPublic from "../hooks/useUsersPublic";
 
 const AllBioData = () => {
-    const [users,] = useUsersPublic();
+    const [users,,,] = useUsersPublic();
     const [searchInput, setSearchInput] = useState('');
     const [selectedCity, setSelectedCity] = useState('');
     const [selectedBiodata, setSelectedBiodata] = useState('');

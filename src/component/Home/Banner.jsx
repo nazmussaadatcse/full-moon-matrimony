@@ -2,10 +2,10 @@
 
 
 const Banner = () => {
-    const backgroundImageUrl = 'https://i.ibb.co/YQQDfp3/meat.jpg'; // Direct URL to your image
+    const backgroundImageUrl = 'https://i.ibb.co/bmk5gQk/banner-FMM.jpg'; 
 
     return (
-        <div className='bg-slate-300 relative'>
+        <div className='bg-slate-300 relative my-2'>
             {/* Darkened background image */}
             <div
                 className='absolute inset-0'
@@ -13,28 +13,27 @@ const Banner = () => {
                     backgroundImage: `url(${backgroundImageUrl})`,
                     backgroundSize: 'cover',
                     backgroundRepeat: 'no-repeat',
-                    filter: 'brightness(50%)', // Adjust brightness for a darker appearance (0% is completely black)
+                    filter: 'brightness(50%)', //
                 }}
             />
 
             {/* Text content */}
-            <div className='relative z-10 flex flex-col justify-center items-center text-center px-6 pt-2 lg:px-8 h-full'>
+            <div className='relative z-10 flex flex-col justify-center items-center text-center px-6 pt-2 lg:px-8 max-h-fit'>
                 <div className='mx-auto max-w-2xl py-32 sm:py-48 lg:py-56'>
                     <div className='hidden sm:mb-8 sm:flex sm:justify-center'>
                         {/* ... */}
                     </div>
                     <div className='text-center text-white'>
-                        <h1 className='text-4xl font-bold tracking-tight sm:text-6xl'>
-                            Data to enrich your online business
-                        </h1>
-                        <p className='mt-6 text-lg leading-8'>
-                            Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet
-                            fugiat veniam occaecat fugiat aliqua.
+                        <h2 className='text-2xl font-bold tracking-tight sm:text-6xl'>
+                        New Era of Matrimony
+                        </h2>
+                        <p className='mt-6 text-lg leading-'>
+                        "Welcome to Full Mon Matrimony - Where Love Finds Its Perfect Match! Embrace a revolutionary matrimony experience tailored to modern connections. Discover a seamless blend of tradition and technology, empowering you to find your ideal partner effortlessly. Join us on this journey, where every story begins with a promise of everlasting love and compatibility."
                         </p>
                         <div className='mt-10 gap-2 flex items-center justify-center'>
                             <a
                                 href='#'
-                                className='rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+                                className='rounded-md bg-pink-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600'
                             >
                                 Get started
                             </a>

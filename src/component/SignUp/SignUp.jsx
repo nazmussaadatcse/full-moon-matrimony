@@ -19,7 +19,7 @@ const SignUp = () => {
     const [passwordError, setPasswordError] = useState('');
     const axiosPublic = useAxiosPublic();
 
-    const [users,] = useUsersPublic();
+    const [users,,,] = useUsersPublic();
     const bioId = (users.length + 1);
     console.log(bioId);
 
