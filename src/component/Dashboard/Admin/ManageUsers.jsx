@@ -5,7 +5,7 @@ import useUsers from "../../hooks/useUsers";
 
 
 const ManageUsers = () => {
-    const [users, refetch] = useUsers();
+    const [users,,, refetch] = useUsers();
     const axiosSecure = useAxiosSecure();
     console.log(users);
 
@@ -39,9 +39,10 @@ const ManageUsers = () => {
                 axiosSecure.patch(`/userToAdmin/${userId}`)
                     .then(res => {
                         if (res.data.modifiedCount) {
-                            refetch();
+                            
 
                             console.log('user is admin now');
+                            refetch();
                             Swal.fire({
                                 title: "The User is Admin Now!",
                                 text: "New Admin Arrived!!.",

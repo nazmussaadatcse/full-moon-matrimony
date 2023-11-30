@@ -18,6 +18,7 @@ import ApprovedContactRequest from "../Dashboard/Admin/ApprovedContactRequest";
 import ApprovedPremium from "../Dashboard/Admin/ApprovedPremium";
 import AllBioData from "../Home/AllBioData";
 import PrivateRoutes from "./PrivateRoutes";
+import AdminRoute from "./AdminRoute";
   
   
   export const router = createBrowserRouter([
@@ -80,7 +81,9 @@ import PrivateRoutes from "./PrivateRoutes";
             },
             {
                 path: 'adminDashboard',
-                element: <AdminDashboard></AdminDashboard>
+                element: <AdminRoute>
+                    <AdminDashboard></AdminDashboard>
+                </AdminRoute>
             },
             {
                 path: 'approvedContactRequest',

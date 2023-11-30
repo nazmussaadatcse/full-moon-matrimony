@@ -21,7 +21,7 @@ const useUsers = () => {
     const femaleUsers = users.filter(user => user.biodataType === 'female');
     const maleUsers = users.filter(user => user.biodataType === 'male');
 
-    return [users, maleUsers, femaleUsers, refetch,loading]
+    return [users, maleUsers, femaleUsers, refetch]
 };
 
 export default useUsers;
