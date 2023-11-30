@@ -79,7 +79,7 @@ const UserDetails = () => {
         <div>
             {
                 bioData &&
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div className="col-span-1 bg-pink-200 pt-24 rounded-md p-4">
                         {/* Left Side */}
                         <div className="flex justify-center text-pink-700 font-semibold text-xl">
@@ -155,7 +155,7 @@ const UserDetails = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-span-1 bg-pink-200 rounded-md p-4 pt-24">
+                    <div className="bg-pink-200 rounded-md p-4 pt-24">
                         {/* Left Side */}
                         <div className="flex justify-center text-pink-700 font-semibold text-xl">
                             <h2>Related Bio Data for You!</h2>

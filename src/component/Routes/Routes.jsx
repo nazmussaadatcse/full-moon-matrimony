@@ -19,6 +19,9 @@ import ApprovedPremium from "../Dashboard/Admin/ApprovedPremium";
 import AllBioData from "../Home/AllBioData";
 import PrivateRoutes from "./PrivateRoutes";
 import AdminRoute from "./AdminRoute";
+import GotMarried from "../Dashboard/GotMarrid";
+
+
 
 
 export const router = createBrowserRouter([
@@ -67,6 +70,7 @@ export const router = createBrowserRouter([
                 path: 'userInfo',
                 element: <UserInfo></UserInfo>
             },
+            
             {
                 path: 'editInfo',
                 element: <EditBio></EditBio>
@@ -102,6 +106,10 @@ export const router = createBrowserRouter([
                 element: <AdminRoute>
                     <ApprovedPremium></ApprovedPremium>
                 </AdminRoute>
+            },
+            {
+                path: 'gotMarried',
+                element: <GotMarried></GotMarried>
             },
 
 

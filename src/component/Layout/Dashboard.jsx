@@ -109,6 +109,9 @@ const Dashboard = () => {
                                 <NavLink to={"/dashboard/approvedContactRequest"} className="block py-2 bg-slate-100   border-pink-600 px-4  border rounded-md hover:bg-purple-300">Approved Contact Request</NavLink>
                             </li>
                             <li>
+                                <NavLink to={"/dashboard/successStories"} className="block py-2 bg-slate-100 border border-pink-600 px-4 rounded-md hover:bg-purple-300">Success Stories</NavLink>
+                            </li>
+                            <li>
                                 <hr />
                             </li>
                             {
@@ -135,11 +138,12 @@ const Dashboard = () => {
                                 <NavLink to={"/dashboard/myFavoriteBiodata"} className="block py-2 bg-slate-100 border border-pink-600 px-4 rounded-md hover:bg-purple-300">Favourites Biodata</NavLink>
                             </li>
                             <li>
-                                <NavLink to={"/"} className="block py-2 bg-slate-100 border border-pink-600 px-4 rounded-md hover:bg-purple-300">Home</NavLink>
+                                <NavLink to={"/dashboard/gotMarried"} className="block py-2 bg-slate-100 border border-pink-600 px-4 rounded-md hover:bg-purple-300">Got Married</NavLink>
                             </li>
                             <li>
-                                <NavLink to={"/"} className="block py-2 bg-slate-100 border border-pink-600 px-4 rounded-md hover:bg-purple-300">Got Married</NavLink>
+                                <NavLink to={"/"} className="block py-2 bg-slate-100 border border-pink-600 px-4 rounded-md hover:bg-purple-300">Home</NavLink>
                             </li>
+                            
                             <li>
                                 <button onClick={handleLogout} className="mt-2 bg-pink-500 hover:bg-pink-600 text-white py-1 px-8 rounded ">
                                     LogOut
@@ -178,7 +182,7 @@ const Dashboard = () => {
                                 <NavLink to={"/dashboard/myFavoriteBiodata"} className="block py-2 bg-slate-100 border border-pink-600 px-4 rounded-md hover:bg-purple-300">Favourites Biodata</NavLink>
                             </li>
                             <li>
-                                <NavLink to={"/"} className="block py-2 bg-slate-100 border border-pink-600 px-4 rounded-md hover:bg-purple-300">Got Married</NavLink>
+                                <NavLink to={"/dashboard/gotMarried"} className="block py-2 bg-slate-100 border border-pink-600 px-4 rounded-md hover:bg-purple-300">Got Married</NavLink>
                             </li>
                             <li>
                                 <NavLink to={"/"} className="block py-2 bg-slate-100 border border-pink-600 px-4 rounded-md hover:bg-purple-300">Home</NavLink>
