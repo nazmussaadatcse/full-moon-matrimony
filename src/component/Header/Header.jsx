@@ -52,7 +52,7 @@ const Header = () => {
     );
 
     const desktopHeader = (
-        <AppBar position="static" sx={{ backgroundColor: 'white', color:'black'}}>
+        <AppBar position="static" sx={{ backgroundColor: 'white', color: 'black' }}>
             <Toolbar>
                 <IconButton edge="start" color="inherit" aria-label="menu">
                     {/* Replace with your logo or icon */}
@@ -96,7 +96,7 @@ const Header = () => {
     );
 
     const mobileHeader = (
-        <AppBar position="static" sx={{ backgroundColor: 'white', color:'black' }}>
+        <AppBar position="static" sx={{ backgroundColor: 'white', color: 'black' }}>
             <Toolbar>
                 <IconButton
                     edge="start"
@@ -115,9 +115,9 @@ const Header = () => {
                 {
                     user ?
                         <div className='flex justify-center items-center'>
-                            
+
                             <div className='flex justify-center items-center border'>
-                                
+
                                 <p className='p-1'>{user.displayName && user.displayName.length > 8
                                     ? `${user.displayName.slice(0, 8)}`
                                     : user.displayName}

@@ -1,6 +1,5 @@
 
 
-
 const Footer = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -12,7 +11,6 @@ const Footer = () => {
 
     return (
         <footer className="bg-gray-900 text-white py-8 mt-24">
-            
             <div className="container mx-auto px-12">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                    

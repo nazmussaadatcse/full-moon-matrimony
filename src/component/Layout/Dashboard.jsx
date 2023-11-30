@@ -204,6 +204,11 @@ const Dashboard = () => {
             <div className="flex-1 p-8">
                 <Outlet />
             </div>
+
+
+
+            
+
         </div>
     );
 };

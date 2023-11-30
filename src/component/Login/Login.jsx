@@ -78,7 +78,7 @@ const Login = () => {
             </Helmet>
     <div className="max-w-xl w-full bg-base-100 shadow-2xl rounded-lg p-8">
         <div className="text-center">
-            <img className="w-1/3 mx-auto" src="https://i.ibb.co/kJ4Jjzm/zero-dollar-bites-logo.png" alt="" />
+            <img className="w-1/3 mx-auto" src="https://i.ibb.co/2vqGtgb/fmmlogo.png" alt="" />
             <h1 className="text-3xl font-bold">Please Login</h1>
             <p className="py-6 text-lg">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis, ex corrupti fugiat aspernatur architecto dignissimos sunt animi facere molestias inventore sed ad nostrum quod at doloribus saepe in magnam voluptatem debitis quos sapiente itaque quia? Natus, fuga alias aut magni deleniti, ipsam aperiam consequatur molestiae mollitia odit numquam quasi.

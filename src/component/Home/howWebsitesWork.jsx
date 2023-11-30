@@ -10,7 +10,7 @@ const HowWebsitesWork = () => {
                 <div className="bg-pink-600 text-white rounded-lg p-12 shadow-md">
                     <h3 className="text-lg font-semibold mb-4">Step 1: Create a Profile</h3>
                     <p>
-                        To get started, every user must create a personalized profile on our website. This profile will serve as your digital identity and enable you to access the site's features and functionalities.
+                        To get started, every user must create a personalized profile on our platform. This profile will serve as your digital identity and enable you to access the site's features and functionalities.
                     </p>
                 </div>
 
@@ -26,7 +26,7 @@ const HowWebsitesWork = () => {
                 <div className="bg-pink-600 text-white rounded-lg p-12 shadow-md">
                     <h3 className="text-lg font-semibold mb-4">Step 3: Update Biodata</h3>
                     <p>
-                        Maintain and keep your information current! Users have the liberty to update their own biodata, ensuring that the displayed information remains accurate and relevant.
+                        Maintain and keep your information current! Users have the liberty to update their own biodata, ensuring that the displayed information remains accurate and relevant. Only premium or Requested member can see your contact info.
                     </p>
                 </div>
 
@@ -34,7 +34,7 @@ const HowWebsitesWork = () => {
                 <div className="bg-pink-600 text-white rounded-lg p-12 shadow-md">
                     <h3 className="text-lg font-semibold mb-4">Step 4: Request Contacts</h3>
                     <p>
-                        Unlock direct communication! Users can request access to contact information after making a payment or request admin approval for premium membership, granting access to additional features.
+                        Unlock direct communication! Users can request access to contact information after making a payment. Also you may request admin approval for premium membership, granting access to additional features.
                     </p>
                 </div>
             </div>

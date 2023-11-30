@@ -86,7 +86,7 @@ const SignUp = () => {
             </Helmet>
             <div className="hero-content p-12 bg-white rounded-md shadow-2xl max-w-xl"> {/* Increased max-width */}
                 <div className="text-center p-8">
-                    <img className="w-1/3 mx-auto" src="https://i.ibb.co/kJ4Jjzm/zero-dollar-bites-logo.png" alt="" />
+                    <img className="w-1/3 mx-auto" src="https://i.ibb.co/2vqGtgb/fmmlogo.png" alt="" />
                     <h1 className="text-3xl font-bold">SignUp now!</h1>
                     <p className="py-6 text-lg">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro aperiam dolorem necessitatibus ipsum perferendis magni sapiente earum impedit delectus, quaerat.

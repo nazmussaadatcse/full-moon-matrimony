@@ -66,7 +66,7 @@ const ApprovedContactRequest = () => {
 
             {/* Cards for Mobile and Tablet */}
             <div className="lg:hidden">
-                {reqUsers?.map((item, i) => (
+                {filteredReqUsers?.map((item, i) => (
                     <div key={i} className="bg-white border rounded-lg shadow-md p-4 mb-4">
                         <p className="border-b border-gray-200 pb-2"><span className="font-semibold">Name:</span> {item?.refName}</p>
                         <p className="border-b border-gray-200 pb-2"><span className="font-semibold">Bio ID:</span> {item?.refBioId}</p>
@@ -115,7 +115,7 @@ const ApprovedContactRequest = () => {
                                         </tr>
                                     </thead>
                                     <tbody className="bg-white divide-y divide-gray-200">
-                                        {reqUsers?.map((item, i) => (
+                                        {filteredReqUsers?.map((item, i) => (
                                             <tr key={i} className="hover:bg-gray-100">
                                                 <td className="px-6 py-4 whitespace-nowrap">
                                                     <div className="text-sm font-medium text-gray-900">{item?.refName}</div>

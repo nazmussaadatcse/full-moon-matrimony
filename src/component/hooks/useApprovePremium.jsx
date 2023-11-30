@@ -12,7 +12,7 @@ const useApprovePremium = () => {
     const axiosSecure = useAxiosSecure();
     const {user} = useContext(AuthContext);
 
-    const { refetch, data: approvePremium = [] } = useQuery({
+    const { refetch: premiumRefetch, data: approvePremium = [] } = useQuery({
 
         queryKey: ['approvePremium', user?.email],
         queryFn: async ()=>{
@@ -20,7 +20,7 @@ const useApprovePremium = () => {
             return res.data;
         }
     })
-    return [approvePremium, refetch]
+    return [approvePremium, premiumRefetch]
 };
 
 
