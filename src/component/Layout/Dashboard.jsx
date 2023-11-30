@@ -4,14 +4,15 @@ import { AuthContext } from '../Providers/AuthProvider';
 import useAxiosSecure from '../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 import useUsers from '../hooks/useUsers';
+import useAdmin from '../hooks/useAdmin';
 
 const Dashboard = () => {
 
     const { user, logOut } = useContext(AuthContext);
     const axiosSecure = useAxiosSecure();
     const [users,] = useUsers();
-    // console.log(users);
-    // console.log(user?.email);
+    const [isAdmin, isAdminLoading] = useAdmin();
+
 
     const currentUser = users.find(userData => userData?.email === user?.email);
 
@@ -88,7 +89,7 @@ const Dashboard = () => {
     return (
         <div className="flex">
             {
-                currentUser?.role === 'admin' ?
+                isAdmin ?
                     <div className="w-64 p-8 min-h-full bg-pink-300">
                         <ul className="rounded-md space-y-4">
                             <li className='text-red-700 font-semibold px-1'>
