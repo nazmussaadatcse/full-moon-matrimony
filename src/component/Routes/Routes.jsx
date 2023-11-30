@@ -20,6 +20,7 @@ import AllBioData from "../Home/AllBioData";
 import PrivateRoutes from "./PrivateRoutes";
 import AdminRoute from "./AdminRoute";
 import GotMarried from "../Dashboard/GotMarrid";
+import SuccessStoriesAdminPanel from "../Dashboard/SuccessStoriesAdminPanel";
 
 
 
@@ -70,7 +71,7 @@ export const router = createBrowserRouter([
                 path: 'userInfo',
                 element: <UserInfo></UserInfo>
             },
-            
+
             {
                 path: 'editInfo',
                 element: <EditBio></EditBio>
@@ -91,9 +92,9 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'adminDashboard',
-                element:  <AdminRoute>
-                        <AdminDashboard></AdminDashboard>
-                    </AdminRoute>
+                element: <AdminRoute>
+                    <AdminDashboard></AdminDashboard>
+                </AdminRoute>
             },
             {
                 path: 'approvedContactRequest',
@@ -110,6 +111,12 @@ export const router = createBrowserRouter([
             {
                 path: 'gotMarried',
                 element: <GotMarried></GotMarried>
+            },
+            {
+                path: 'successStories',
+                element: <AdminRoute>
+                    <SuccessStoriesAdminPanel></SuccessStoriesAdminPanel>
+                </AdminRoute>
             },
 
 

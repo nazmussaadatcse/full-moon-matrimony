@@ -7,11 +7,6 @@ const SuccessStory = () => {
     const [successStories,] = useStories();
     console.log(successStories);
 
-    console.log(successStories.coupleImageLink);
-    console.log(successStories.selectedDate);
-    console.log(successStories.selectedReview);
-    console.log(successStories.successStory);
-
 
     return (
         <div className="container mx-auto px-4 py-8">
