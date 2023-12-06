@@ -20,7 +20,7 @@ const MyContactRequest = () => {
 
 
     const handleDelete = (itemId) => {
-        const userEmail = user?.email;
+        const userEmail = user.email;
 
         console.log(`Deleting item with ID: ${itemId} for user email: ${userEmail}`);
 
@@ -74,7 +74,7 @@ const MyContactRequest = () => {
                         <p className="border-b border-gray-200 pb-2"><span className="font-semibold">Name:</span> {item?.refName}</p>
                         <p className="border-b border-gray-200 pb-2"><span className="font-semibold">Bio ID:</span> {item?.refBioId}</p>
                         <p className="border-b border-gray-200 pb-2"><span className="font-semibold">Status:</span> {item?.status}</p>
-                        <p className="border-b border-gray-200 pb-2"><span className="font-semibold">Email:</span> {item?.status === 'pending' ? 'Requested' : item?.refEmail}</p>
+                        <p className="border-b border-gray-200 pb-2"><span className="font-semibold">Email:</span> {item?.status !== 'pending' ? 'Requested' : item?.refEmail}</p>
                         <p className="border-b border-gray-200 pb-2"><span className="font-semibold">Phone:</span> {item?.status === 'pending' ? 'Requested' : item?.refMobileNumber} </p>
                         <p className="border-b border-gray-200 pb-2"><span className="font-semibold">Payment Status: Paid(500BDT)</span></p>
                         <button onClick={() => handleDelete(item?._id)} className="mt-2 bg-pink-500 hover:bg-pink-600 text-white py-1 px-3 rounded mx-1">

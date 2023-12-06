@@ -6,6 +6,12 @@ import ReactStars from "react-rating-stars-component";
 const SuccessStory = () => {
     const [successStories,] = useStories();
     console.log(successStories);
+    
+    successStories.sort((a, b) => {
+        const dateA = new Date(a.selectedDate);
+        const dateB = new Date(b.selectedDate);
+        return dateB - dateA;
+    });
 
 
     return (
@@ -28,7 +34,7 @@ const SuccessStory = () => {
                             </div>
                             {/* Marriage Date */}
                             <p className="text-md mb-1">Marriage Date: <span className="uppercase text-black">{story.selectedDate}</span></p>
-                            
+
                             <ReactStars
                                 count={5}
                                 value={story?.selectedReview}

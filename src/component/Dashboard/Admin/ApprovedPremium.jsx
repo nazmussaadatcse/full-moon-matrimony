@@ -89,7 +89,7 @@ const ApprovedPremium = () => {
 
             {/* ////////////////////////////////// */}
             <div className="flex items-center justify-center my-4">
-                <h1 className="text-2xl text-pink-700 font-semibold mb-4">Approved Contact Request</h1>
+                <h1 className="text-2xl text-pink-700 font-semibold mb-4">Approved Premium</h1>
             </div>
 
             {/* Cards for Mobile and Tablet */}

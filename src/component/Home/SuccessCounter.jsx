@@ -6,7 +6,8 @@ const SuccessCounter = () => {
 
     const [users, , femaleUsers, maleUsers] = useUsersPublic();
     const [reqUsers,] = useContactRequest();
-
+    const premiumUsers = users.filter(user => user.userType === 'premium');
+    console.log(premiumUsers.length);
 
 
     return (
@@ -27,7 +28,7 @@ const SuccessCounter = () => {
                         <p className="text-xl font-bold mb-2">Female Users</p>
                     </div>
                     <div className="flex-1 border p-8 flex flex-col justify-center items-center">
-                        <p className="text-4xl font-bold">{reqUsers.length}</p>
+                        <p className="text-4xl font-bold">{premiumUsers.length}</p>
                         <p className="text-xl font-bold mb-2">Premium Members</p>
                     </div>
                 </div>

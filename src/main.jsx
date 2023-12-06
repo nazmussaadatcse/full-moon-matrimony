@@ -1,3 +1,4 @@
+import { ThemeProvider } from '@mui/material/styles';
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
@@ -5,7 +6,6 @@ import { RouterProvider } from 'react-router-dom'
 import { router } from './component/Routes/Routes'
 import AuthProvider from './component/Providers/AuthProvider'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ThemeProvider } from '@mui/styles'
 import theme from '../src/component/Providers/theme'
 
 

@@ -25,6 +25,7 @@ const CheckoutForm = ({ id }) => {
 
     console.log('reqData', reqData?.name);
     console.log('myData', myData?.bioId);
+    console.log(user);
 
 
 
@@ -96,7 +97,7 @@ const CheckoutForm = ({ id }) => {
                     payment_method: {
                         card: card,
                         billing_details: {
-                            name: user?.name || 'anonymous',
+                            name: user?.displayName || 'anonymous',
                             email: user?.email || 'anonymous'
                         },
                     },
@@ -113,7 +114,7 @@ const CheckoutForm = ({ id }) => {
 
                         const payment = {
                             email: user.email,
-                            name: user.name,
+                            name: user.displayName,
                             price: totalPrice,
                             transactionId: paymentIntent.id,
                             date: new Date().toLocaleString(),
@@ -124,6 +125,8 @@ const CheckoutForm = ({ id }) => {
                             refMobileNumber: reqData?.mobileNumber,
                             status: 'pending'
                         }
+
+                        console.log(payment);
                         const res = await axiosSecure.post('/payments', payment);
                         console.log('payment saved: ', res.data);
                         console.log('payment saved: ', res.data?.message);

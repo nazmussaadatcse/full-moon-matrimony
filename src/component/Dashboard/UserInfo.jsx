@@ -8,7 +8,7 @@ import { Helmet } from "react-helmet";
 
 const UserInfo = () => {
     const {user} = useContext(AuthContext);
-    const [users,] = useUsers(); 
+    const [users,,,] = useUsers(); 
     console.log(users);
     
     const loggedUser = users.find(person=> person?.email === user?.email);

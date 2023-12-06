@@ -13,10 +13,12 @@ const ApprovedContactRequest = () => {
     const [reqUsers, refetch] = useContactRequest();
     const [users] = useUsers();
     const axiosSecure = useAxiosSecure();
-
-
-    const filteredReqUsers = reqUsers.filter((reqUser) => reqUser?.email === user?.email);
+    
+    console.log(reqUsers);
+    
+    const filteredReqUsers = users.filter((reqUser) => reqUser?.email === user?.email);
     console.log(filteredReqUsers);
+    // console.log(user);
 
     const handleApprove = (itemId) => {
         console.log("Item ID to approve:", itemId);
@@ -68,9 +70,9 @@ const ApprovedContactRequest = () => {
             <div className="lg:hidden">
                 {reqUsers?.map((item, i) => (
                     <div key={i} className="bg-white border rounded-lg shadow-md p-4 mb-4">
-                        <p className="border-b border-gray-200 pb-2"><span className="font-semibold">Name:</span> {item?.refName}</p>
+                        <p className="border-b border-gray-200 pb-2"><span className="font-semibold">Name:</span> {item?.name}</p>
                         <p className="border-b border-gray-200 pb-2"><span className="font-semibold">Bio ID:</span> {item?.refBioId}</p>
-                        <p className="border-b border-gray-200 pb-2"><span className="font-semibold">Email:</span> {item?.refEmail}</p>
+                        <p className="border-b border-gray-200 pb-2"><span className="font-semibold">Email:</span> {item?.email}</p>
                         {
                             item?.status === 'pending' ?
                                 <button onClick={() => handleApprove(item?._id)} className="mt-2 bg-pink-500 hover:bg-pink-600 text-white py-1 px-3 rounded mx-1">
@@ -118,14 +120,14 @@ const ApprovedContactRequest = () => {
                                         {reqUsers?.map((item, i) => (
                                             <tr key={i} className="hover:bg-gray-100">
                                                 <td className="px-6 py-4 whitespace-nowrap">
-                                                    <div className="text-sm font-medium text-gray-900">{item?.refName}</div>
+                                                    <div className="text-sm font-medium text-gray-900">{item?.name}</div>
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-nowrap">
                                                     <div className="text-sm font-medium text-gray-900">{item?.refBioId}</div>
                                                 </td>
 
                                                 <td className="px-6 py-4 whitespace-nowrap">
-                                                    <div className="text-sm text-gray-500">{item?.refEmail}</div>
+                                                    <div className="text-sm text-gray-500">{item?.email}</div>
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-nowrap">
                                                     <div className="text-sm text-gray-500">Paid [BDT 500]</div>

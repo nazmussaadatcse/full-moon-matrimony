@@ -21,6 +21,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import AdminRoute from "./AdminRoute";
 import GotMarried from "../Dashboard/GotMarrid";
 import SuccessStoriesAdminPanel from "../Dashboard/SuccessStoriesAdminPanel";
+import Err404 from "../Layout/Err404";
 
 
 
@@ -29,6 +30,7 @@ export const router = createBrowserRouter([
     {
         path: "/",
         element: <Main></Main>,
+        errorElement:<Err404></Err404>,
         children: [
             {
                 path: '/',

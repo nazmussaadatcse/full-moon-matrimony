@@ -176,6 +176,9 @@ const EditBio = () => {
                             <label className="p-1 rounded-md bg-slate-100">Occupation: </label>
                             <select className="p-1 mx-1" defaultValue={user ? selectedUser?.occupation : ''} {...register('occupation', { required: true })}>
                                 <option value="">Select Occupation</option>
+                                <option value="Student">Student</option>
+                                <option value="Job">Job</option>
+                                <option value="House wife">House wife</option>
                                 <option value="Teacher">Teacher</option>
                                 <option value="Engineer">Engineer</option>
                                 <option value="Doctor">Doctor</option>
@@ -246,6 +249,7 @@ const EditBio = () => {
                                 <option value="">Select Height</option>
                                 <option value="4">4 feet</option>
                                 <option value="4.5">4.5 feet</option>
+                                <option value="5">5 feet</option>
                                 <option value="5.5">5.5 feet</option>
                                 <option value="6">6 feet</option>
                                 <option value="7">7 feet</option>
