@@ -84,7 +84,7 @@ const SignUp = () => {
             <Helmet>
                 <title>Full Moon Matrimony | SignUp</title>
             </Helmet>
-            <div className="hero-content p-12 bg-white rounded-md shadow-2xl max-w-xl"> {/* Increased max-width */}
+            <div className=" mt-8 p-12 bg-white rounded-md shadow-2xl max-w-xl"> {/* Increased max-width */}
                 <div className="text-center p-8">
                     <img className="w-1/3 mx-auto" src="https://i.ibb.co/2vqGtgb/fmmlogo.png" alt="" />
                     <h1 className="text-3xl font-bold">SignUp now!</h1>
@@ -92,7 +92,7 @@ const SignUp = () => {
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro aperiam dolorem necessitatibus ipsum perferendis magni sapiente earum impedit delectus, quaerat.
                     </p>
                 </div>
-                <div className="card flex-shrink-0 mx-auto w-full max-w-md shadow-2xl bg-white p-8 border rounded-md"> {/* Increased max-width, added padding and border */}
+                <div className="flex-shrink-0 mx-auto w-full max-w-md shadow-2xl bg-white p-8 border rounded-md"> {/* Increased max-width, added padding and border */}
                     <form onSubmit={handleSubmit(onSubmit)} className="bg-pink-200 rounded-md p-4 space-y-4">
                         <div className="form-control flex flex-col">
                             <label className="font-semibold">
